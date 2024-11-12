@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: setup:1
+      author: setup
+      comment: Create DBs for each environment/infrastructure
+      changes:
+        - sql: 
+            dbms: 'mssql'
+            sql: |
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'development')
+              BEGIN
+                CREATE DATABASE development;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'test')
+              BEGIN
+                CREATE DATABASE test;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'staging')
+              BEGIN
+                CREATE DATABASE staging;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'production_us')
+              BEGIN
+                CREATE DATABASE production_us;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'production_eu')
+              BEGIN
+                CREATE DATABASE production_eu;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'production_apj_north')
+              BEGIN
+                CREATE DATABASE production_apj_north;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'production_af')
+              BEGIN
+                CREATE DATABASE production_af;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'production_me')
+              BEGIN
+                CREATE DATABASE production_me;          
+              END;
+              IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'production_apj_south')
+              BEGIN
+                CREATE DATABASE production_apj_south;          
+              END;             
+              GO
