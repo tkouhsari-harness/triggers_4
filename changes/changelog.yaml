@@ -4,7 +4,7 @@ databaseChangeLog:
       author: my.poc
       labels: tag_1 
       context: example-context
-      comment: example comment
+      comment: example comment1
       changes:
         - createTable:
             tableName: person
